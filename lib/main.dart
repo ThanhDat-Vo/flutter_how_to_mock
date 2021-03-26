@@ -38,16 +38,21 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Center(
-            child: FutureBuilder(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: FutureBuilder(
           future: _timeService.getCurrentTime(),
           builder: (context, snapshot) {
             if (snapshot.hasData == false) return Container();
-            return Text("Current time: " + snapshot.data);
+            return Text(
+              "Good " + snapshot.data + "!",
+              key: Key("CurrentTime"),
+            );
           },
-        )));
+        ),
+      ),
+    );
   }
 }
