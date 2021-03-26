@@ -7,9 +7,8 @@ main() {
   testWidgets("show Good Morning! Text", (tester) async {
     await tester.pumpWidget(MyApp());
     await tester.pump();
-    final textWidget = find.byKey(Key("CurrentTime"));
+    final textWidget = find.text("Good Morning!");
 
-    expect(textWidget,
-        isA<Text>().having((s) => s.data, "has data", "Good Morning!"));
+    expect(textWidget, findsOneWidget);
   });
 }
