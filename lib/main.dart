@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:how_to_mock/repositories/time_repository.dart';
 import 'package:how_to_mock/services/time_service.dart';
 
 void main() {
@@ -29,28 +30,25 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   TimeService _timeService;
+  TimeRepository _timeRepository;
   @override
   void initState() {
     _timeService = TimeService();
+    _timeRepository = TimeRepository();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    String time = _timeService.getCurrentTime(_timeRepository.now());
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: Center(
-        child: FutureBuilder(
-          future: _timeService.getCurrentTime(DateTime.now()),
-          builder: (context, snapshot) {
-            if (snapshot.hasData == false) return Container();
-            return Text(
-              "Good " + snapshot.data + "!",
-              key: Key("CurrentTime"),
-            );
-          },
+        child: Text(
+          "Good " + time + "!",
+          key: Key("CurrentTime"),
         ),
       ),
     );
