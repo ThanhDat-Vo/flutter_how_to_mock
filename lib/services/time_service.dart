@@ -1,6 +1,5 @@
 class TimeService {
-  Future<String> getCurrentTime() async {
-    final now = DateTime.now();
+  Future<String> getCurrentTime(DateTime now) async {
     if (now.hour > 6 && now.hour < 12) {
       return "Morning";
     }
