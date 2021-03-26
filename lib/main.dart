@@ -37,7 +37,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('--> DateTime.now(): ' + DateTime.now().toString());
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
