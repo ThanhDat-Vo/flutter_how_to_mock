@@ -37,20 +37,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    String time = _timeService.getCurrentTime();
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
       body: Center(
-        child: FutureBuilder(
-          future: _timeService.getCurrentTime(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData == false) return Container();
-            return Text(
-              "Good " + snapshot.data + "!",
-              key: Key("CurrentTime"),
-            );
-          },
+        child: Text(
+          "Good " + time + "!",
+          key: Key("CurrentTime"),
         ),
       ),
     );
